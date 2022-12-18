@@ -1,12 +1,15 @@
 import { Router } from "itty-router"
 import Posts from "./handlers/posts"
 
-// import Posts from "./handlers/posts";
-// import Post from "./handlers/post";
-
 const router = Router()
-router.get!("/api/posts", Posts)
-// router.get("/api/posts/:id", Post)
+
+router.get!('/', (request, env, context) => {
+    // now have access to the env (where CF bindings like durables, KV, etc now are)'
+    return new Response('Hello World', {status: 200})
+})
+
 router.get!("*", () => new Response("Not found", { status: 404 }))
 
-export const handleRequest = (request: any) => router.handle(request)
+export default {
+    fetch: router.handle
+}
