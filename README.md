@@ -4,7 +4,7 @@ Akuko is a web application on serverless infrastructure that fetches news from v
 
 ## Architecture Diagram
 
-![Architecture Diagram](./arch2.svg)
+![Architecture Diagram](./arch2.png)
 
 ## Tech Stack
 
