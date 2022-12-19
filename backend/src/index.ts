@@ -8,7 +8,9 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-import handler from './handler'
+import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
+import { createContext } from './context';
+import { appRouter } from './router';
 
 export interface Env {
 	// Example binding to KV. Learn more at https://developers.cloudflare.com/workers/runtime-apis/kv/
@@ -21,4 +23,13 @@ export interface Env {
 	// MY_BUCKET: R2Bucket;
 }
 
-export default handler
+export default {
+  async fetch(request: Request): Promise<Response> {
+    return fetchRequestHandler({
+      endpoint: '/api/trpc',
+      req: request,
+      router: appRouter, 
+	  createContext
+    });
+  },
+};

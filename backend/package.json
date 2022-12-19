@@ -12,6 +12,7 @@
     "deploy": "wrangler publish"
   },
   "dependencies": {
-    "itty-router": "^3.0.8"
+    "@trpc/server": "^10.5.0",
+    "zod": "^3.20.2"
   }
 }
